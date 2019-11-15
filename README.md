@@ -23,10 +23,11 @@ Downloading the whole corpus takes several hours. In order to limit the load on 
 The folder [BiLSTMAvg](BiLSTMAvg) contains source code of the document-averaged BiLSTM document classifier. The following files are included:
 * `model.py` with a BiLSTMAvg model implemented in Keras,
 * `functions.py` with some utility functions,
-* `GoogleNewsUnigrams.zip` with word2vec embeddings [trained on Google News corpus](https://code.google.com/archive/p/word2vec/) that are used for word representation, 
-* `run.py` showing how to use the above resources to replicate the cross-validation evaluation as shown in the article.
+* `run.py` showing how to use the above to replicate the cross-validation evaluation as shown in the article.
 
 The code was tested on Python 3.6.8 with TensorFlow 1.14.
+
+The model uses word2vec embeddings [trained on Google News corpus](https://code.google.com/archive/p/word2vec/) for token representation. You can [download them](https://home.ipipan.waw.pl/p.przybyla/GoogleNewsUnigrams.zip) or use one of many other solutions available for this task.
 
 
 
