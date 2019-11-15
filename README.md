@@ -8,6 +8,14 @@ The resources available here are the following:
 * a code for credibility classifier based on neural networks.
 
 ## News Style Corpus
+The corpus generated in this research contains 103,219 documents from 18 credible and 205 non-credible sources selected based on work of [PolitiFact](https://www.politifact.com/punditfact/article/2017/apr/20/politifacts-guide-fake-news-websites-and-what-they/) and [Pew Research Center](https://www.journalism.org/2014/10/21/political-polarization-media-habits/).
+
+The folder [NewsStyleCorpus](NewsStyleCorpus) contains the following files necessary to retrieve the pages constituting the corpus from the *[WayBackMachine](https://web.archive.org/)* archive:
+* `corpusSources.tsv`: tab-separated list of all documents in the corpus, each with the website (domain) it comes from and its credibility label, original page URL and the address, under which the document is currently available at the archive,
+* `CredibilityCorpusDownloader.java`: a sample code in Java that retrieves HTML documents from the given address list and converts them to plain text, following the procedure described in the article,
+* `foldsCV.tsv`: a list of fold identifiers for the documents from `corpusSources.tsv` (in the same order) for three CV scenarios described in the paper: document-based, topic-based and source-based.
+
+Downloading the whole corpus takes several hours. In order to limit the load on the *WayBackMachine* infrastructure and retrieve all the pages (some may be temporarily unavailable), you should perform the process in stages. You can select just part of the corpus for download by modifying the address list.
 
 ## Stylometric classifier
 
