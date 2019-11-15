@@ -19,7 +19,9 @@ The folder [NewsStyleCorpus](NewsStyleCorpus) contains the following files neces
 
 Downloading the whole corpus takes several hours. In order to limit the load on the *WayBackMachine* infrastructure and retrieve all the pages (some may be temporarily unavailable), you should perform the process in stages. You can select just part of the corpus for download by modifying the address list.
 
-## Stylometric classifier
+## Stylometric Classifier
+
+
 
 ## BiLSTMAvg
 The folder [BiLSTMAvg](BiLSTMAvg) contains source code of the document-averaged BiLSTM neural network. The following files are included:
