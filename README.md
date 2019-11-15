@@ -27,9 +27,9 @@ The folder [BiLSTMAvg](BiLSTMAvg) contains source code of the document-averaged 
 * `functions.py` with utility functions,
 * `run.py` showing how to use the above to replicate the cross-validation evaluation as shown in the article.
 
-The code was tested on Python 3.6.8 with TensorFlow 1.14. Java code for converting the News Style Corpus to a format used by BiLSTMAvg or BERT baseline is uploaded in `DataConversion.java`.
+The code was tested on Python 3.6.8 with TensorFlow 1.14. Java code for converting the News Style Corpus to a format used by BiLSTMAvg or BERT baseline is uploaded as `DataConversion.java`.
 
-The model uses word2vec embeddings [trained on Google News corpus](https://code.google.com/archive/p/word2vec/) for token representation. You can download them [here](https://home.ipipan.waw.pl/p.przybyla/GoogleNewsUnigrams.zip) or use your own.
+The model uses word2vec embeddings [trained on Google News corpus](https://code.google.com/archive/p/word2vec/). You can download them [here](https://home.ipipan.waw.pl/p.przybyla/GoogleNewsUnigrams.zip) or use your own method for token representation.
 
 
 
