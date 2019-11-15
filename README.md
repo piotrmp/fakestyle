@@ -22,14 +22,14 @@ Downloading the whole corpus takes several hours. In order to limit the load on 
 ## Stylometric classifier
 
 ## BiLSTMAvg
-The folder [BiLSTMAvg](BiLSTMAvg) contains source code of the document-averaged BiLSTM document classifier. The following files are included:
-* `model.py` with a BiLSTMAvg model implemented in Keras,
-* `functions.py` with some utility functions,
+The folder [BiLSTMAvg](BiLSTMAvg) contains source code of the document-averaged BiLSTM neural network. The following files are included:
+* `model.py` with the BiLSTMAvg model implemented in Keras,
+* `functions.py` with utility functions,
 * `run.py` showing how to use the above to replicate the cross-validation evaluation as shown in the article.
 
-The code was tested on Python 3.6.8 with TensorFlow 1.14.
+The code was tested on Python 3.6.8 with TensorFlow 1.14. Java code for converting the News Style Corpus to a format used by BiLSTMAvg or BERT baseline is uploaded in `DataConversion.java`.
 
-The model uses word2vec embeddings [trained on Google News corpus](https://code.google.com/archive/p/word2vec/) for token representation. You can [download them](https://home.ipipan.waw.pl/p.przybyla/GoogleNewsUnigrams.zip) or use one of many other solutions available for this task.
+The model uses word2vec embeddings [trained on Google News corpus](https://code.google.com/archive/p/word2vec/) for token representation. You can download them [here](https://home.ipipan.waw.pl/p.przybyla/GoogleNewsUnigrams.zip) or use your own.
 
 
 
