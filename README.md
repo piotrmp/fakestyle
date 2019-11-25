@@ -20,7 +20,8 @@ The folder [NewsStyleCorpus](NewsStyleCorpus) contains the following files neces
 Downloading the whole corpus takes several hours. In order to limit the load on the *WayBackMachine* infrastructure and retrieve all the pages (some may be temporarily unavailable), you should perform the process in stages. You can select just part of the corpus for download by modifying the address list.
 
 ## Stylometric Classifier
-
+The implementation of the stylometric classifier is available in three folders:
+* `NewsFeatures` generating the stylometric features described in the paper for a given text corpus, 
 
 
 ## BiLSTMAvg
