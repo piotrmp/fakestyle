@@ -21,7 +21,7 @@ Downloading the whole corpus takes several hours. In order to limit the load on 
 
 ## Stylometric Classifier
 The implementation of the stylometric classifier is available in three folders:
-* `NewsFeatures` is a Java application for generating the stylometric features (through the `Main.main()` procedure) for a given text corpus,
+* `NewsFeatures` is a Java application for generating the stylometric features (through the `Main.main()` procedure) for a given text corpus. It uses [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/) and an extended version of [General Inquirer](http://www.wjh.harvard.edu/~inquirer/spreadsheet_guide.htm) word list, to be found in `NewsFeatures/resources`.
 
 
 ## BiLSTMAvg
