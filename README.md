@@ -21,7 +21,7 @@ Downloading the whole corpus takes several hours. In order to limit the load on 
 
 ## Stylometric Classifier
 The implementation of the stylometric classifier is available in three folders:
-* `NewsFeatures` generating the stylometric features described in the paper for a given text corpus, 
+* `NewsFeatures` generating the stylometric features (`Main.main()` procedure) described in the paper for a given text corpus, 
 
 
 ## BiLSTMAvg
