@@ -26,7 +26,7 @@ The implementation of the stylometric classifier is available in three folders:
 
 ## BiLSTMAvg
 The folder [BiLSTMAvg](BiLSTMAvg) contains source code of the document-averaged BiLSTM neural network. The following files are included:
-* `model.py` with the BiLSTMAvg model implemented in Keras,
+* `model.py` with the BiLSTMAvg model implemented in TensorFlow/Keras,
 * `functions.py` with utility functions,
 * `run.py` showing how to use the above to replicate the cross-validation evaluation as shown in the article.
 
