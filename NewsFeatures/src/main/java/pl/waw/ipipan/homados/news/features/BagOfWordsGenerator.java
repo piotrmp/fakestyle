@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -14,7 +15,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
-
 import pl.waw.ipipan.homados.news.ArchivedPage;
 import pl.waw.ipipan.homados.news.ArchivedSite;
 import pl.waw.ipipan.homados.news.Corpus;
@@ -105,16 +105,14 @@ public class BagOfWordsGenerator {
 		return result;
 	}
 
-
-	
-	public void output(Corpus corpus, File dir) throws IOException {
+	public void output(Corpus corpus, File dir, Path inputFile) throws IOException {
 		BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.get(dir.getPath(), "words.tsv").toFile()));
 		for (int i = 1; i < lexemes.length; ++i)
 			bw.write(lexemes[i] + "\t" + i + "\n");
 		bw.close();
 		List<String> otherFeatureNames = new LinkedList<String>();
-		if (features!=null)
-			otherFeatureNames=features.names();
+		if (features != null)
+			otherFeatureNames = features.names();
 		@SuppressWarnings("rawtypes")
 		List[] sets = { corpus.getTrainSet(), corpus.getTestSet(), corpus.getDevSet() };
 		Path[] pathsSparse = { Paths.get(dir.getPath(), "train.csr"), Paths.get(dir.getPath(), "test.csr"), Paths.get(dir.getPath(), "dev.csr") };
@@ -129,38 +127,60 @@ public class BagOfWordsGenerator {
 				writerDense[i].write("\t" + otherFeatureNames.get(j));
 			writerDense[i].write("\n");
 		}
-		for (ArchivedSite site : corpus.getSites()) {
-			System.out.println("Printing features of " + site.getDomain());
-			corpus.readContents(site);
-			for (ArchivedPage page : site.getAllPages())
-				for (int i = 0; i < sets.length; ++i)
-					if (sets[i].contains(page)) {
-						Map<String, Integer> counts = new HashMap<String, Integer>();
-						countLexemes(page, counts);
-						SortedMap<Integer, Integer> sortedCounts = sortCounts(counts);
-						int length = getLength(page);
-						writerSparse[i].write(page.getFake() ? "1" : "0");
-						for (Integer key : sortedCounts.keySet())
-							writerSparse[i].write(" " + key + ":" + (sortedCounts.get(key) * 1.0 / length));
-						writerSparse[i].newLine();
-						Map<String, Double> otherFeatures = null;
-						if (features!=null)
-							otherFeatures=features.compute(page);
-						writerDense[i].write(page.getFake() ? "1" : "0");
-						writerDense[i].write("\t" + page.getDomain());
-						writerDense[i].write("\t" + page.getTopic());
-						for (int j = 0; j < otherFeatureNames.size(); ++j)
-							writerDense[i].write("\t" + otherFeatures.get(otherFeatureNames.get(j)));
-						writerDense[i].newLine();
+		ArchivedSite currentSite = null;
+		for (String line : Files.readAllLines(inputFile)) {
+			String[] parts = line.split("\t");
+			String domain = parts[1].strip();
+			if (!domain.contains("."))
+				continue;
+			if (currentSite == null || !currentSite.getDomain().equals(domain)) {
+				if (currentSite != null) {
+					currentSite.removeContent();
+					//System.out.println("Finished with " + currentSite.getDomain());
+					currentSite = null;
+				}
+				for (ArchivedSite site : corpus.getSites())
+					if (site.getDomain().equals(domain)) {
+						currentSite = site;
+						break;
 					}
-			site.removeContent();
+				if (currentSite == null) {
+					System.out.println("Skipping unknown domain " + domain);
+					continue;
+				}
+				corpus.readContents(currentSite);
+				System.out.println("Printing features of " + currentSite.getDomain());
+			}
+			String pageNo = parts[2];
+			ArchivedPage page = currentSite.getNumberedPage(pageNo);
+			for (int i = 0; i < sets.length; ++i)
+				if (sets[i].contains(page)) {
+					Map<String, Integer> counts = new HashMap<String, Integer>();
+					countLexemes(page, counts);
+					SortedMap<Integer, Integer> sortedCounts = sortCounts(counts);
+					int length = getLength(page);
+					writerSparse[i].write(page.getFake() ? "1" : "0");
+					for (Integer key : sortedCounts.keySet())
+						writerSparse[i].write(" " + key + ":" + (sortedCounts.get(key) * 1.0 / length));
+					writerSparse[i].newLine();
+					Map<String, Double> otherFeatures = null;
+					if (features != null)
+						otherFeatures = features.compute(page);
+					writerDense[i].write(page.getFake() ? "1" : "0");
+					writerDense[i].write("\t" + page.getDomain());
+					writerDense[i].write("\t" + page.getTopic());
+					for (int j = 0; j < otherFeatureNames.size(); ++j)
+						writerDense[i].write("\t" + otherFeatures.get(otherFeatureNames.get(j)));
+					writerDense[i].newLine();
+				}
 		}
+		if (currentSite != null)
+			currentSite.removeContent();
 		for (int i = 0; i < sets.length; ++i) {
 			writerSparse[i].close();
 			writerDense[i].close();
 		}
 	}
-
 
 	private SortedMap<Integer, Integer> sortCounts(Map<String, Integer> counts) {
 		SortedMap<Integer, Integer> result = new TreeMap<Integer, Integer>();

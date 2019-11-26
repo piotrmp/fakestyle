@@ -72,6 +72,10 @@ public class ArchivedSite implements Serializable {
 	public Collection<ArchivedPage> getAllPages() {
 		return numberedPages.values();
 	}
+	
+	public ArchivedPage getNumberedPage(String number) {
+		return numberedPages.get(number);
+	}
 
 	public void setFake(boolean fake) {
 		this.fake = fake;

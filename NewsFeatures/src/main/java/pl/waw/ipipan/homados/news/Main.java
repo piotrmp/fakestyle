@@ -15,10 +15,11 @@ public class Main {
 		String topicsPath = args[1];
 		String annotationCachePath = args[2];
 		String giExtendedPath = args[3];
-		String outPath = args[4];
+		String corpusSourcesPath = args[4];
+		String outPath = args[5];
 		mainTopics(corpusPath, topicsPath);
 		mainAnnotate(corpusPath, annotationCachePath);
-		mainFeatures(corpusPath, annotationCachePath, topicsPath, giExtendedPath, outPath);
+		mainFeatures(corpusPath, annotationCachePath, topicsPath, giExtendedPath, corpusSourcesPath, outPath);
 	}
 
 	private static void mainTopics(String corpusPath, String topicsPath) throws IOException {
@@ -37,7 +38,7 @@ public class Main {
 		System.out.println("Added tags: " + result);
 	}
 
-	public static void mainFeatures(String corpusPath, String annotationCachePath, String topicsPath, String giExtendedPath, String outPath)
+	public static void mainFeatures(String corpusPath, String annotationCachePath, String topicsPath, String giExtendedPath, String orderedPages, String outPath)
 			throws IOException, ClassNotFoundException, ClassCastException {
 		Corpus corpus = new Corpus(new File(corpusPath), Paths.get(annotationCachePath));
 		corpus.readTopics(new File(topicsPath + "pages.tsv"));
@@ -45,7 +46,7 @@ public class Main {
 		GeneralInquirerRecogniserExtended gi = new GeneralInquirerRecogniserExtended(Paths.get(giExtendedPath));
 		BagOfWordsGenerator bow = new BagOfWordsGenerator(new OtherFeatures(gi));
 		bow.consume(corpus);
-		bow.output(corpus, new File(outPath));
+		bow.output(corpus, new File(outPath), Paths.get(orderedPages));
 	}
 
 }
