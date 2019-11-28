@@ -7,7 +7,7 @@ The resources available here are the following:
 * a code for credibility classifier based on stylometric features,
 * a code for credibility classifier based on neural networks.
 
-If you need any more information consult [the paper](https://home.ipipan.waw.pl/p.przybyla/bib/capturing.pdf) or contact the author! 
+If you need any more information consult [the paper](https://home.ipipan.waw.pl/p.przybyla/bib/capturing.pdf) or contact its author! 
 
 ## News Style Corpus
 The corpus generated in this research contains 103,219 documents from 18 credible and 205 non-credible sources selected based on work of [PolitiFact](https://www.politifact.com/punditfact/article/2017/apr/20/politifacts-guide-fake-news-websites-and-what-they/) and [Pew Research Center](https://www.journalism.org/2014/10/21/political-polarization-media-habits/).
