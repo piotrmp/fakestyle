@@ -20,8 +20,9 @@ The folder [NewsStyleCorpus](NewsStyleCorpus) contains the following files neces
 Downloading the whole corpus takes several hours. In order to limit the load on the *WayBackMachine* infrastructure and retrieve all the pages (some may be temporarily unavailable), you should perform the process in stages. You can select just part of the corpus for download by modifying the address list.
 
 ## Stylometric Classifier
-The implementation of the stylometric classifier is available in three folders:
+The implementation of the stylometric classifier is available in two folders:
 * `NewsFeatures` is a Java application for generating the stylometric features (through the `Main.main()` procedure) for a given text corpus. It uses [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/) and an extended version of [General Inquirer](http://www.wjh.harvard.edu/~inquirer/spreadsheet_guide.htm) word list, to be found in `NewsFeatures/resources`.
+* `R`, including a script in R for building a glmnet model on the generated features and performing evaluation according to the CV scenarios.
 
 
 ## BiLSTMAvg
