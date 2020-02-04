@@ -38,7 +38,7 @@ The model uses word2vec embeddings [trained on Google News corpus](https://code.
 ## Licence
 * The corpus data are released under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) licence.
 * The code is released under the [GNU GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.html) licence.
-* The extended GI dictionary is based on (and includes) the original General Inquirer dictionary; see its [page](http://www.wjh.harvard.edu/~inquirer/spreadsheet_guide.htm) for copyright information.
+* The extended GI dictionary is based on the original General Inquirer dictionary; see its [page](http://www.wjh.harvard.edu/~inquirer/spreadsheet_guide.htm) for copyright information.
 
 
 
