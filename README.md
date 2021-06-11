@@ -1,13 +1,13 @@
 # HOMADOS: Capturing the Style of Fake News
 
-This repository contains resources for the article *[Capturing the Style of Fake News](https://home.ipipan.waw.pl/p.przybyla/bib/capturing.pdf)* presented at the *AI for Social Impact* track at the [AAAI 2020](https://aaai.org/Conferences/AAAI-20/) in New York. The research was done within the [HOMADOS](https://homados.ipipan.waw.pl/) project at the [Institute of Computer Science](https://ipipan.waw.pl/), Polish Academy of Sciences.
+This repository contains resources for the article *[Capturing the Style of Fake News](https://ojs.aaai.org//index.php/AAAI/article/view/5386)* presented at the *AI for Social Impact* track at the [AAAI 2020](https://aaai.org/Conferences/AAAI-20/) in New York. The research was done within the [HOMADOS](https://homados.ipipan.waw.pl/) project at the [Institute of Computer Science](https://ipipan.waw.pl/), Polish Academy of Sciences.
 
 The resources available here are the following:
 * a corpus including credible and non-credible (*fake*) news documents,
 * a code for credibility classifier based on stylometric features,
 * a code for credibility classifier based on neural networks.
 
-If you need any more information consult [the paper](https://home.ipipan.waw.pl/p.przybyla/bib/capturing.pdf) or contact its author! 
+If you need any more information consult [the paper](https://ojs.aaai.org//index.php/AAAI/article/view/5386) or contact its author! 
 
 ## News Style Corpus
 The corpus generated in this research contains 103,219 documents from 18 credible and 205 non-credible sources selected based on work of [PolitiFact](https://www.politifact.com/punditfact/article/2017/apr/20/politifacts-guide-fake-news-websites-and-what-they/) and [Pew Research Center](https://www.journalism.org/2014/10/21/political-polarization-media-habits/).
