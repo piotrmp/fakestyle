@@ -10,6 +10,9 @@ The resources available here are the following:
 If you need any more information consult [the paper](https://ojs.aaai.org//index.php/AAAI/article/view/5386) or contact its author! 
 
 ## News Style Corpus
+
+**NOTE:** A new and improved version (v2.0) of this corpus was developed to create the *Credibilator* browser extension and is available in [its repository](https://github.com/piotrmp/credibilator).
+
 The corpus generated in this research contains 103,219 documents from 18 credible and 205 non-credible sources selected based on work of [PolitiFact](https://www.politifact.com/punditfact/article/2017/apr/20/politifacts-guide-fake-news-websites-and-what-they/) and [Pew Research Center](https://www.journalism.org/2014/10/21/political-polarization-media-habits/).
 
 The folder [NewsStyleCorpus](NewsStyleCorpus) contains the following files necessary to retrieve the pages constituting the corpus from the *[WayBackMachine](https://web.archive.org/)* archive:
